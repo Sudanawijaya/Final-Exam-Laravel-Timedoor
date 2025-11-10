@@ -109,7 +109,7 @@ class BookController extends Controller
         $books = $query->paginate($perPage)
                 ->onEachSide(1) 
                 ->withQueryString();
-
+        
         $avgGlobal = $C; 
 
         $books->through(function ($book) use ($avgGlobal) {

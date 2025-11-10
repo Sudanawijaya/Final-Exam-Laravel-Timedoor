@@ -149,6 +149,7 @@
                 <thead class="bg-gray-50 border-b border-gray-100">
                     <tr>
                         <th class="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Judul</th>
+                        <th class="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">ISBN</th>
                         <th class="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Penulis</th>
                         <th class="px-6 py-4 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">Kategori</th>
                         <th class="px-6 py-4 text-center text-xs font-medium text-gray-600 uppercase tracking-wider">Tahun</th>
@@ -166,6 +167,10 @@
                             <td class="px-6 py-4">
                                 <span class="text-sm font-medium text-gray-900">{{ $book->title }}</span>
                             </td>
+                            <td class="px-6 py-4">
+                                <span class="text-sm text-gray-600">{{ $book->isbn ?? '-' }}</span>
+                            </td>
+
                             <td class="px-6 py-4">
                                 <span class="text-sm text-gray-600">{{ $book->author->name ?? '-' }}</span>
                             </td>

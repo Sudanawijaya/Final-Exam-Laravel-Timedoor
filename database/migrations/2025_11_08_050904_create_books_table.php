@@ -20,7 +20,6 @@ class CreateBooksTable extends Migration {
             $table->unsignedInteger('total_votes')->default(0)->index();
             $table->decimal('avg_rating', 4, 2)->default(0.00)->index();
             $table->decimal('weighted_score', 10, 6)->default(0.0)->index();
-
       
             $table->unsignedInteger('recent_votes_30d')->default(0);
             $table->decimal('avg_last_30d', 4, 2)->default(0.00);

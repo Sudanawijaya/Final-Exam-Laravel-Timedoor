@@ -20,7 +20,7 @@ class RatingSeeder extends Seeder
 
         if (empty($userIds) || empty($bookIds)) {
             $this->command->warn('User or Book data missing. Run UserSeeder and BookSeeder first.');
-            return;
+            return;  
         }
 
         $ratings = [];

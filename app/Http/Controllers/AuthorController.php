@@ -13,6 +13,7 @@ class AuthorController extends Controller
     {
         $tab = $request->input('tab','popularity'); 
 
+        // Popularitas
         if ($tab === 'popularity') {
             $authors = DB::table('authors')
                 ->leftJoin('books','books.author_id','authors.id')
@@ -22,6 +23,7 @@ class AuthorController extends Controller
                 ->orderByDesc('voters_gt5')
                 ->limit(20)
                 ->get();
+        // Rata-rata Rating
         } elseif ($tab === 'avg_rating') {
             $authors = DB::table('authors')
                 ->leftJoin('books','books.author_id','authors.id')
@@ -32,6 +34,7 @@ class AuthorController extends Controller
                 ->limit(20)
                 ->get();
         } else {
+            // Tren
             $now = Carbon::now();
             $last30 = $now->copy()->subDays(30)->toDateTimeString();
             $prev60 = $now->copy()->subDays(60)->toDateTimeString();
@@ -60,6 +63,7 @@ class AuthorController extends Controller
 
         $authorIds = $authors->pluck('id')->toArray();
         $stats = [];
+        // Statistik Tambahan per Penulis
         foreach ($authorIds as $id) {
             $total = DB::table('books')->where('author_id',$id)->join('ratings','ratings.book_id','books.id')->count();
             $best = DB::table('books')->where('author_id',$id)
